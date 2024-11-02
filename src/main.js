@@ -41,7 +41,7 @@ function createSidebar() {
 
 async function loadDocs(snippet = 'binary-search') {
     try {
-        const response = await fetch(`docs/${snippet}.md`);
+        const response = await fetch(`/docs/${snippet}.md`);
         const markdown = await response.text();
         
         document.querySelector('.content').innerHTML = marked(markdown);
@@ -50,7 +50,7 @@ async function loadDocs(snippet = 'binary-search') {
     }
 }
 
-function initializeApp() {
+async function initializeApp() {
     const container = document.createElement('div');
     container.className = 'documentation-container';
     
@@ -63,7 +63,7 @@ function initializeApp() {
     document.querySelector('#app').appendChild(container);
     
     // Load initial documentation
-    loadDocs();
+    await loadDocs();
 }
 
 initializeApp();

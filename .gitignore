@@ -29,4 +29,4 @@ venv/
 requirements.txt
 
 # Docs
-src/docs/*
+public/docs/

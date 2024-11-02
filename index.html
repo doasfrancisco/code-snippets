@@ -14,7 +14,10 @@
       repo: '',
       loadSidebar: true,
       subMaxLevel: 2,
-      basePath: '/src/docs/'
+      basePath: '/docs/',
+      alias: {
+        '/.*/_sidebar.md': '/_sidebar.md'
+      }
     }
   </script>
   <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
