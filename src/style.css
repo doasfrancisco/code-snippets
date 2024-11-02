@@ -1,0 +1,7 @@
+.documentation {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    white-space: pre-wrap;
+    font-family: system-ui, -apple-system, sans-serif;
+}
