@@ -13,9 +13,22 @@ async function generateDocs() {
             .filter(dirent => dirent.isDirectory() && !IGNORED_DIRS.includes(dirent.name))
             .map(dirent => dirent.name);
 
+        
         // Create docs directory
         await fs.mkdir(DOCS_DIR, { recursive: true });
         
+        // Create README.md if it doesn't exist
+        const readmePath = path.join(DOCS_DIR, 'README.md');
+        if (!await fs.access(readmePath).catch(() => false)) {
+            await fs.writeFile(readmePath, '# Code Snippets\n\nWelcome to the code snippets documentation.');
+        }
+
+        // Create 404.md if it doesn't exist
+        const notFoundPath = path.join(DOCS_DIR, '_404.md');
+        if (!await fs.access(notFoundPath).catch(() => false)) {
+            await fs.writeFile(notFoundPath, '# 404 - Not found\n\nThe page you\'re looking for doesn\'t exist.');
+        }
+
         // Generate sidebar content
         let sidebarContent = '';
         
