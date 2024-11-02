@@ -49,11 +49,10 @@ async function generateDocs() {
                     .map(word => word.charAt(0).toUpperCase() + word.slice(1))
                     .join(' ');
                 
-                sidebarContent += `  * [${displayName}](${dir}/${snippetName}.md)\n`;
+                // Changed: Update sidebar link to point to flat structure
+                sidebarContent += `  * [${displayName}](${dir}-${snippetName}.md)\n`;
                 
-                // Create subdirectory in docs for each category
-                await fs.mkdir(path.join(DOCS_DIR, dir), { recursive: true });
-                
+                // Changed: Remove subdirectory creation since we're using flat structure
                 // Generate documentation for each file
                 const content = await fs.readFile(path.join(SNIPPETS_DIR, dir, file), 'utf8');
                 const docstringMatch = content.match(/"{3}([\s\S]*?){3}/);
@@ -69,7 +68,8 @@ ${content}
 ${docstring.split('\n').map(line => line.trim()).join('\n')}
 `;
                 
-                await fs.writeFile(path.join(DOCS_DIR, dir, `${snippetName}.md`), markdown);
+                // Changed: Write files to root docs directory with directory prefix
+                await fs.writeFile(path.join(DOCS_DIR, `${dir}-${snippetName}.md`), markdown);
             }
         }
         
