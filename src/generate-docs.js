@@ -55,8 +55,6 @@ async function generateDocs() {
 ${content}
 \`\`\`
 
-## Documentation
-
 ${docstring.split('\n').map(line => line.trim()).join('\n')}
 `;
                 
