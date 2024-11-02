@@ -27,3 +27,6 @@ dist-ssr
 # Python
 venv/
 requirements.txt
+
+# Docs
+src/docs/*

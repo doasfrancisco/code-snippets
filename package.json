@@ -5,8 +5,8 @@
     "type": "module",
     "scripts": {
         "docs": "node src/generate-docs.js",
-        "dev": "vite",
-        "build": "vite build",
+        "dev": "npm run docs && vite",
+        "build": "npm run docs && vite build",
         "preview": "vite preview"
     },
     "devDependencies": {
