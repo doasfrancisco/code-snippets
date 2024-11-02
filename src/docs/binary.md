@@ -1,7 +1,7 @@
 
-# Binary Search
+# Binary
 
-```python
+```py
 
 def binary_search(arr, target):
     """
